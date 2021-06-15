@@ -4,7 +4,7 @@ services:
   discovery-server:
     image: hashanchamikara/microservices-discovery-server
     ports:
-      - "8001:8001"
+      - "8001:8080"
     command: --logging.file=application.log
     deploy:
       resources:
@@ -14,8 +14,8 @@ services:
   config-server:
     image: hashanchamikara/microservices-config-server
     ports:
-      - "8101:8101"
-    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8001/eureka/ --logging.file=application.log
+      - "8101:8080"
+    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
     deploy:
       resources:
         limits:
@@ -24,8 +24,8 @@ services:
   biz-application:
     image: hashanchamikara/microservices-biz-application
     ports:
-      - "9001:9001"
-    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8001/eureka/ --logging.file=application.log
+      - "9001:8080"
+    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
     volumes:
       - ~/h2-databases:/root/h2-databases
     deploy:
@@ -36,8 +36,8 @@ services:
   admin-application:
     image: hashanchamikara/microservices-admin-application
     ports:
-      - "9101:9101"
-    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8001/eureka/ --logging.file=application.log
+      - "9101:8080"
+    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
     deploy:
       resources:
         limits:
@@ -46,8 +46,8 @@ services:
   news-application:
     image: hashanchamikara/microservices-news-application
     ports:
-      - "9201:9201"
-    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8001/eureka/ --logging.file=application.log
+      - "9201:8080"
+    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
     deploy:
       resources:
         limits:
@@ -56,8 +56,8 @@ services:
   website-application:
     image: hashanchamikara/microservices-website-application
     ports:
-      - "9301:9301"
-    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8001/eureka/ --logging.file=application.log
+      - "9301:8080"
+    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
     deploy:
       resources:
         limits:
@@ -67,7 +67,7 @@ services:
     image: hashanchamikara/microservices-proxy-server
     ports:
       - "8080:8080"
-    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8001/eureka/ --logging.file=application.log
+    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
     deploy:
       resources:
         limits:
@@ -77,7 +77,7 @@ services:
     image: hashanchamikara/microservices-monitor-application
     ports:
       - "8201:8201"
-    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8001/eureka/ --logging.file=application.log
+    command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
     deploy:
       resources:
         limits:
