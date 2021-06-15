@@ -2,7 +2,7 @@ version: '3'
 
 services:
   discovery-server:
-    image: alejandrodu/microservices-discovery-server
+    image: hashanchamikara/microservices-discovery-server
     ports:
       - "8001:8080"
     command: --logging.file=application.log
@@ -12,7 +12,7 @@ services:
           memory: 128M
 
   config-server:
-    image: alejandrodu/microservices-config-server
+    image: hashanchamikara/microservices-config-server
     ports:
       - "8101:8080"
     command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
@@ -22,7 +22,7 @@ services:
           memory: 128M
 
   biz-application:
-    image: alejandrodu/microservices-biz-application
+    image: hashanchamikara/microservices-biz-application
     ports:
       - "9001:8080"
     command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
@@ -34,7 +34,7 @@ services:
           memory: 128M
 
   admin-application:
-    image: alejandrodu/microservices-admin-application
+    image: hashanchamikara/microservices-admin-application
     ports:
       - "9101:8080"
     command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
@@ -44,7 +44,7 @@ services:
           memory: 256M
 
   news-application:
-    image: alejandrodu/microservices-news-application
+    image: hashanchamikara/microservices-news-application
     ports:
       - "9201:8080"
     command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
@@ -54,7 +54,7 @@ services:
           memory: 128M
 
   website-application:
-    image: alejandrodu/microservices-website-application
+    image: hashanchamikara/microservices-website-application
     ports:
       - "9301:8080"
     command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
@@ -64,7 +64,7 @@ services:
           memory: 128M
 
   proxy-server:
-    image: alejandrodu/microservices-proxy-server
+    image: hashanchamikara/microservices-proxy-server
     ports:
       - "8080:8080"
     command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log
@@ -74,7 +74,7 @@ services:
           memory: 128M
 
   monitor-application:
-    image: alejandrodu/microservices-monitor-application
+    image: hashanchamikara/microservices-monitor-application
     ports:
       - "8201:8201"
     command: --eureka.client.serviceUrl.defaultZone=http://discovery-server:8080/eureka/ --logging.file=application.log

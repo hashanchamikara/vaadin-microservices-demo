@@ -107,7 +107,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>alejandrodu/microservices-${project.artifactId}</repository>
+                    <repository>hashanchamikara/microservices-${project.artifactId}</repository>
                     <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
